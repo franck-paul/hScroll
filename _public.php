@@ -46,8 +46,8 @@ class hscrollPublic
 			'hscroll_bottom' => ($core->blog->settings->hscroll->position == 'top' ? 'unset' : '0'),
 			'hscroll_shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0')
 		)).
-		dcUtils::jsLoad($core->blog->getPF('hscroll/js/cssvar.js')).
-		dcUtils::cssLoad($core->blog->getPF('hscroll/css/hscroll.css'));
+		dcUtils::jsLoad($core->blog->getPF('hScroll/js/cssvar.js')).
+		dcUtils::cssLoad($core->blog->getPF('hScroll/css/hscroll.css'));
 	}
 
 	public static function publicFooterContent($core)
@@ -70,6 +70,6 @@ class hscrollPublic
 
 		echo
 		'<div id="hscroll-bar"><div id="hscroll-bar-inner"></div></div>'."\n".
-		dcUtils::jsLoad($core->blog->getPF('hscroll/js/hscroll.js'));
+		dcUtils::jsLoad($core->blog->getPF('hScroll/js/hscroll.js'));
 	}
 }
