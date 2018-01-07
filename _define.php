@@ -15,7 +15,7 @@ $this->registerModule(
 	/* Name */			"hscroll",
 	/* Description*/		"Horizontal scrollbar",
 	/* Author */			"Franck Paul and contributors",
-	/* Version */			'0.1.1',
+	/* Version */			'0.2',
 	array(
 		/* Dependencies */	'requires' =>		array(array('core','2.9')),
 		/* Permissions */	'permissions' =>	'admin',

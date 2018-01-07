@@ -89,6 +89,10 @@ class hscrollBehaviors
 		form::combo('hscroll_position',$styles,$settings->hscroll->position).
 		'</p>'.
 
+		'<p><label for="hscroll_offset" class="classic">'.__('Offset position (in pixels):').'</label> '.
+		form::field('hscroll_offset',7,7,(integer) $settings->hscroll->offset).
+		'</p>'.
+
 		'<p><label for="hscroll_color" class="classic">'.__('Scrollbar color:').'</label> '.
 		self::color('hscroll_color',7,7,$color).'</p>'.
 
@@ -108,6 +112,7 @@ class hscrollBehaviors
 		$settings->addNameSpace('hscroll');
 		$settings->hscroll->put('enabled',!empty($_POST['hscroll_enabled']),'boolean');
 		$settings->hscroll->put('position',$_POST['hscroll_position']);
+		$settings->hscroll->put('offset',(integer) $_POST['hscroll_offset']);
 		$settings->hscroll->put('color',$_POST['hscroll_color']);
 		$settings->hscroll->put('shadow',!empty($_POST['hscroll_shadow']));
 		$settings->hscroll->put('single',!empty($_POST['hscroll_single']));
