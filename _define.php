@@ -9,16 +9,16 @@
 # http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
 # -- END LICENSE BLOCK ------------------------------------
 
-if (!defined('DC_RC_PATH')) { return; }
+if (!defined('DC_RC_PATH')) {return;}
 
 $this->registerModule(
-	/* Name */			"hscroll",
-	/* Description*/		"Horizontal scrollbar",
-	/* Author */			"Franck Paul and contributors",
-	/* Version */			'0.2',
-	array(
-		/* Dependencies */	'requires' =>		array(array('core','2.9')),
-		/* Permissions */	'permissions' =>	'admin',
-		/* Type */			'type' =>			'plugin'
-	)
+    "hscroll",                      // Name
+    "Horizontal scrollbar",         // Description
+    "Franck Paul and contributors", // Author
+    '0.2',                          // Version
+    array(
+        'requires'    => array(array('core', '2.9')), // Dependencies
+        'permissions' => 'admin',                     // Permissions
+        'type'        => 'plugin'                    // Type
+    )
 );
