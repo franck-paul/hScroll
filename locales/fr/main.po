@@ -45,6 +45,3 @@ msgstr "Ajouter une ombre à la barre"
 
 msgid "Activate only in single entry context"
 msgstr "Activer seulement dans les contextes d'entrée simple (billet, page)"
-
-#~ msgid "In theme"
-#~ msgstr "Dans le thème"
