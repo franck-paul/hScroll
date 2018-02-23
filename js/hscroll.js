@@ -1,5 +1,6 @@
+'use strict';
+
 function hscroll_bar() {
-    'use strict';
     var t = document.querySelector('#hscroll-bar'),
         a = document.body.clientHeight,
         n = window.innerHeight,

@@ -1,3 +1,6 @@
+/*global hscroll_color:true, hscroll_top:true, hscroll_bottom:true, hscroll_shadow:true */
+'use strict';
+
 if (typeof hscroll_color === 'undefined') {
     hscroll_color = '#e9573f';
 }
