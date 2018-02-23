@@ -1,4 +1,6 @@
 <?php
+namespace plugins\hscroll;
+
 # -- BEGIN LICENSE BLOCK ----------------------------------
 # This file is part of bigfoot, a plugin for Dotclear 2.
 #
@@ -14,8 +16,8 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 // dead but useful code, in order to have translations
 __('hscroll') . __('Horizontal scrollbar');
 
-$core->addBehavior('adminBlogPreferencesForm', array('hscrollBehaviors', 'adminBlogPreferencesForm'));
-$core->addBehavior('adminBeforeBlogSettingsUpdate', array('hscrollBehaviors', 'adminBeforeBlogSettingsUpdate'));
+$core->addBehavior('adminBlogPreferencesForm', array(__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm'));
+$core->addBehavior('adminBeforeBlogSettingsUpdate', array(__NAMESPACE__ . '\hscrollBehaviors', 'adminBeforeBlogSettingsUpdate'));
 
 class hscrollBehaviors
 {
@@ -32,7 +34,7 @@ class hscrollBehaviors
     private static function getDefaults($class, $method)
     {
         $options = array();
-        $reflect = new ReflectionMethod($class, $method);
+        $reflect = new \ReflectionMethod($class, $method);
         foreach ($reflect->getParameters() as $param) {
             if ($param->isOptional()) {
                 $options[$param->getName()] = $param->getDefaultValue();
@@ -98,28 +100,28 @@ class hscrollBehaviors
         '<div class="fieldset"><h4>hScroll</h4>' .
 
         '<p><label class="classic">' .
-        form::checkbox('hscroll_enabled', '1', $settings->hscroll->enabled) .
+        \form::checkbox('hscroll_enabled', '1', $settings->hscroll->enabled) .
         __('Enable horizontal scrollbar') . '</label></p>' .
 
         '<h5>' . __('Options') . '</h5>' .
 
         '<p><label for="hscroll_position" class="classic">' . __('Position:') . '</label> ' .
-        form::combo('hscroll_position', $styles, $settings->hscroll->position) .
+        \form::combo('hscroll_position', $styles, $settings->hscroll->position) .
         '</p>' .
 
         '<p><label for="hscroll_offset" class="classic">' . __('Offset position (in pixels):') . '</label> ' .
-        form::field('hscroll_offset', 7, 7, (integer) $settings->hscroll->offset) .
+        \form::field('hscroll_offset', 7, 7, (integer) $settings->hscroll->offset) .
         '</p>' .
 
         '<p><label for="hscroll_color" class="classic">' . __('Scrollbar color:') . '</label> ' .
         self::color('hscroll_color', array('default' => $color)) . '</p>' .
 
         '<p><label for="hscroll_shadow" class="classic">' .
-        form::checkbox('hscroll_shadow', '1', $settings->hscroll->shadow) .
+        \form::checkbox('hscroll_shadow', '1', $settings->hscroll->shadow) .
         __('Add shadow to the scrollbar') . '</label>' . '</p>' .
 
         '<p><label for="hscroll_single" class="classic">' .
-        form::checkbox('hscroll_single', '1', $settings->hscroll->single) .
+        \form::checkbox('hscroll_single', '1', $settings->hscroll->single) .
         __('Activate only in single entry context') . '</label>' . '</p>' .
 
             '</div>';
