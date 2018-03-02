@@ -21,70 +21,6 @@ $core->addBehavior('adminBeforeBlogSettingsUpdate', array(__NAMESPACE__ . '\hscr
 
 class hscrollBehaviors
 {
-    private static function getNameAndId($nid, &$name, &$id)
-    {
-        if (is_array($nid)) {
-            $name = $nid[0];
-            $id   = !empty($nid[1]) ? $nid[1] : null;
-        } else {
-            $name = $id = $nid;
-        }
-    }
-
-    private static function getDefaults($class, $method)
-    {
-        $options = array();
-        $reflect = new \ReflectionMethod($class, $method);
-        foreach ($reflect->getParameters() as $param) {
-            if ($param->isOptional()) {
-                $options[$param->getName()] = $param->getDefaultValue();
-            }
-        }
-        return $options;
-    }
-
-    /**
-     * HTML5 Color field
-     *
-     * Returns HTML code for an input color field. $nid could be a string or an array of
-     * name and ID.
-     *
-     * @param string|array  $nid         Element ID and name
-     * @param integer       $size        Element size
-     * @param integer       $max         Element maxlength
-     * @param string        $default     Element value
-     * @param string        $class       Element class name
-     * @param string        $tabindex    Element tabindex
-     * @param boolean       $disabled    True if disabled
-     * @param string        $extra_html  Extra HTML attributes
-     *
-     * @return string
-     */
-    public static function color($nid, $size = 7, $max = 7, $default = '', $class = '', $tabindex = '',
-        $disabled = false, $extra_html = '') {
-
-        self::getNameAndId($nid, $name, $id);
-        if (func_num_args() > 1 && is_array($size)) {
-            // Cope with associative array of optional parameters
-            $options = self::getDefaults(__CLASS__, __FUNCTION__);
-            extract(array_merge($options, array_intersect_key($size, $options)));
-        }
-
-        $res = '<input type="color" size="' . $size . '" name="' . $name . '" ';
-
-        $res .= $id ? 'id="' . $id . '" ' : '';
-        $res .= $max ? 'maxlength="' . $max . '" ' : '';
-        $res .= $default || $default === '0' ? 'value="' . $default . '" ' : '';
-        $res .= $class ? 'class="' . $class . '" ' : '';
-        $res .= $tabindex ? 'tabindex="' . $tabindex . '" ' : '';
-        $res .= $disabled ? 'disabled="disabled" ' : '';
-        $res .= $extra_html;
-
-        $res .= ' />';
-
-        return $res;
-    }
-
     public static function adminBlogPreferencesForm($core, $settings)
     {
         # Style options
@@ -110,11 +46,11 @@ class hscrollBehaviors
         '</p>' .
 
         '<p><label for="hscroll_offset" class="classic">' . __('Offset position (in pixels):') . '</label> ' .
-        \form::field('hscroll_offset', 7, 7, (integer) $settings->hscroll->offset) .
+        \form::number('hscroll_offset', array('default' => $settings->hscroll->offset)) .
         '</p>' .
 
         '<p><label for="hscroll_color" class="classic">' . __('Scrollbar color:') . '</label> ' .
-        self::color('hscroll_color', array('default' => $color)) . '</p>' .
+        \form::color('hscroll_color', array('default' => $color)) . '</p>' .
 
         '<p><label for="hscroll_shadow" class="classic">' .
         \form::checkbox('hscroll_shadow', '1', $settings->hscroll->shadow) .

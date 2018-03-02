@@ -17,8 +17,9 @@ $this->registerModule(
     "Franck Paul and contributors", // Author
     '0.2',                          // Version
     array(
-        'requires'    => array(array('core', '2.9')), // Dependencies
-        'permissions' => 'admin',                     // Permissions
-        'type'        => 'plugin'                    // Type
+        'requires'    => array(array('core', '2.14')),
+        'permissions' => 'admin',
+        'support'     => 'https://open-time.net/?q=hscroll',
+        'type'        => 'plugin'
     )
 );
