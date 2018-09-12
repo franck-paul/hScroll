@@ -15,8 +15,8 @@ namespace plugins\hscroll;
 
 if (!defined('DC_RC_PATH')) {return;}
 
-$core->addBehavior('publicHeadContent', array(__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent'));
-$core->addBehavior('publicFooterContent', array(__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent'));
+$core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent']);
+$core->addBehavior('publicFooterContent', [__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent']);
 
 class hscrollPublic
 {
@@ -29,7 +29,7 @@ class hscrollPublic
 
         if ($core->blog->settings->hscroll->single) {
             // Single mode only, check if post/page context
-            $urlTypes = array('post');
+            $urlTypes = ['post'];
             if ($core->plugins->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
@@ -39,18 +39,18 @@ class hscrollPublic
         }
 
         $position = $core->blog->settings->hscroll->position;
-        if (!in_array($position, array('top', 'bottom', 'user'))) {
+        if (!in_array($position, ['top', 'bottom', 'user'])) {
             $style = 'top';
         }
         $offset = (integer) $core->blog->settings->hscroll->offset;
 
         echo
-        \dcUtils::jsVars(array(
+        \dcUtils::jsVars([
             'hscroll_color'  => ($core->blog->settings->hscroll->color ?: '#e9573f'),
             'hscroll_top'    => ($core->blog->settings->hscroll->position == 'top' ? "$offset" . 'px' : 'unset'),
             'hscroll_bottom' => ($core->blog->settings->hscroll->position == 'bottom' ? "$offset" . 'px' : 'unset'),
             'hscroll_shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0')
-        )) .
+        ]) .
         \dcUtils::jsLoad($core->blog->getPF('hScroll/js/cssvar.js')) .
         \dcUtils::cssLoad($core->blog->getPF('hScroll/css/hscroll.css'));
     }
@@ -64,7 +64,7 @@ class hscrollPublic
 
         if ($core->blog->settings->hscroll->single) {
             // Single mode only, check if post/page context
-            $urlTypes = array('post');
+            $urlTypes = ['post'];
             if ($core->plugins->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }

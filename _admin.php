@@ -18,18 +18,18 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 // dead but useful code, in order to have translations
 __('hscroll') . __('Horizontal scrollbar');
 
-$core->addBehavior('adminBlogPreferencesForm', array(__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm'));
-$core->addBehavior('adminBeforeBlogSettingsUpdate', array(__NAMESPACE__ . '\hscrollBehaviors', 'adminBeforeBlogSettingsUpdate'));
+$core->addBehavior('adminBlogPreferencesForm', [__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm']);
+$core->addBehavior('adminBeforeBlogSettingsUpdate', [__NAMESPACE__ . '\hscrollBehaviors', 'adminBeforeBlogSettingsUpdate']);
 
 class hscrollBehaviors
 {
     public static function adminBlogPreferencesForm($core, $settings)
     {
         # Style options
-        $styles = array(
+        $styles = [
             __("Top")    => 'top',
             __("Bottom") => 'bottom'
-        );
+        ];
 
         $settings->addNameSpace('hscroll');
         $color = ($settings->hscroll->color ?: '#e9573f');
@@ -48,11 +48,11 @@ class hscrollBehaviors
         '</p>' .
 
         '<p><label for="hscroll_offset" class="classic">' . __('Offset position (in pixels):') . '</label> ' .
-        \form::number('hscroll_offset', array('default' => $settings->hscroll->offset)) .
+        \form::number('hscroll_offset', ['default' => $settings->hscroll->offset]) .
         '</p>' .
 
         '<p><label for="hscroll_color" class="classic">' . __('Scrollbar color:') . '</label> ' .
-        \form::color('hscroll_color', array('default' => $color)) . '</p>' .
+        \form::color('hscroll_color', ['default' => $color]) . '</p>' .
 
         '<p><label for="hscroll_shadow" class="classic">' .
         \form::checkbox('hscroll_shadow', '1', $settings->hscroll->shadow) .

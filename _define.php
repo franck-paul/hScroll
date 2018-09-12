@@ -18,10 +18,10 @@ $this->registerModule(
     "Horizontal scrollbar",         // Description
     "Franck Paul and contributors", // Author
     '0.2',                          // Version
-    array(
-        'requires'    => array(array('core', '2.14')),
+    [
+        'requires'    => [['core', '2.14']],
         'permissions' => 'admin',
         'support'     => 'https://open-time.net/?q=hscroll',
         'type'        => 'plugin'
-    )
+    ]
 );
