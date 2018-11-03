@@ -1,23 +1,24 @@
-/*global hscroll_color:true, hscroll_top:true, hscroll_bottom:true, hscroll_shadow:true */
+/* global getData */
 'use strict';
 
-if (typeof hscroll_color === 'undefined') {
-    hscroll_color = '#e9573f';
+const hscroll_data = getData('hscroll');
+if (typeof hscroll_data.color === 'undefined') {
+  hscroll_data.color = '#e9573f';
 }
-if (typeof hscroll_top === 'undefined' || typeof hscroll_bottom === 'undefined') {
-    hscroll_top = '0';
-    hscroll_bottom = 'unset';
+if (typeof hscroll_data.top === 'undefined' || typeof hscroll_data.bottom === 'undefined') {
+  hscroll_data.top = '0';
+  hscroll_data.bottom = 'unset';
 }
-if (typeof hscroll_shadow === 'undefined' || hscroll_shadow != '1') {
-    hscroll_shadow = 'unset';
+if (typeof hscroll_data.shadow === 'undefined' || hscroll_data.shadow != '1') {
+  hscroll_data.shadow = 'unset';
 } else {
-    if (hscroll_top == '0') {
-        hscroll_shadow = '1px 1px 4px rgba(0, 0, 0, 0.5)';
-    } else {
-        hscroll_shadow = '1px -1px 4px rgba(0, 0, 0, 0.5)';
-    }
+  if (hscroll_data.top == '0') {
+    hscroll_data.shadow = '1px 1px 4px rgba(0, 0, 0, 0.5)';
+  } else {
+    hscroll_data.shadow = '1px -1px 4px rgba(0, 0, 0, 0.5)';
+  }
 }
-document.documentElement.style.setProperty('--hscroll-color', hscroll_color);
-document.documentElement.style.setProperty('--hscroll-top', hscroll_top);
-document.documentElement.style.setProperty('--hscroll-bottom', hscroll_bottom);
-document.documentElement.style.setProperty('--hscroll-shadow', hscroll_shadow);
+document.documentElement.style.setProperty('--hscroll-color', hscroll_data.color);
+document.documentElement.style.setProperty('--hscroll-top', hscroll_data.top);
+document.documentElement.style.setProperty('--hscroll-bottom', hscroll_data.bottom);
+document.documentElement.style.setProperty('--hscroll-shadow', hscroll_data.shadow);

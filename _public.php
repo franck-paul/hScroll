@@ -44,13 +44,15 @@ class hscrollPublic
         }
         $offset = (integer) $core->blog->settings->hscroll->offset;
 
+        echo \dcUtils::jsJson('hscroll', [
+            'color'  => ($core->blog->settings->hscroll->color ?: '#e9573f'),
+            'top'    => ($core->blog->settings->hscroll->position == 'top' ? "$offset" . 'px' : 'unset'),
+            'bottom' => ($core->blog->settings->hscroll->position == 'bottom' ? "$offset" . 'px' : 'unset'),
+            'shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0')
+        ]);
+
         echo
-        \dcUtils::jsVars([
-            'hscroll_color'  => ($core->blog->settings->hscroll->color ?: '#e9573f'),
-            'hscroll_top'    => ($core->blog->settings->hscroll->position == 'top' ? "$offset" . 'px' : 'unset'),
-            'hscroll_bottom' => ($core->blog->settings->hscroll->position == 'bottom' ? "$offset" . 'px' : 'unset'),
-            'hscroll_shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0')
-        ]) .
+        \dcUtils::jsLoad($core->blog->getPF('util.js')) .
         \dcUtils::jsLoad($core->blog->getPF('hScroll/js/cssvar.js')) .
         \dcUtils::cssLoad($core->blog->getPF('hScroll/css/hscroll.css'));
     }
