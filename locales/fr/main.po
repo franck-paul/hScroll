@@ -44,4 +44,4 @@ msgid "Add shadow to the scrollbar"
 msgstr "Ajouter une ombre à la barre"
 
 msgid "Activate only in single entry context"
-msgstr "Activer seulement dans les contextes d'entrée simple (billet, page)"
+msgstr "Activer seulement dans les contextes de publication simple (billet, page)"
