@@ -21,7 +21,11 @@ $this->registerModule(
     [
         'requires'    => [['core', '2.15']],
         'permissions' => 'admin',
-        'support'     => 'https://open-time.net/?q=hscroll',
-        'type'        => 'plugin'
+        'type'        => 'plugin',
+        'details'     => 'https://open-time.net/?q=hscroll',       // Details URL
+        'support'     => 'https://github.com/franck-paul/hScroll', // Support URL
+        'settings'    => [
+            'blog' => '#params.hscroll'
+        ]
     ]
 );

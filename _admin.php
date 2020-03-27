@@ -35,7 +35,7 @@ class hscrollBehaviors
         $color = ($settings->hscroll->color ?: '#e9573f');
 
         echo
-        '<div class="fieldset"><h4>hScroll</h4>' .
+        '<div class="fieldset"><h4 id="hscroll">hScroll</h4>' .
 
         '<p><label class="classic">' .
         \form::checkbox('hscroll_enabled', '1', $settings->hscroll->enabled) .
