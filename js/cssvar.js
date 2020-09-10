@@ -1,7 +1,7 @@
-/* global getData */
+/* global dotclear */
 'use strict';
 
-const hscroll_data = getData('hscroll');
+const hscroll_data = dotclear.getData('hscroll');
 if (typeof hscroll_data.color === 'undefined') {
   hscroll_data.color = '#e9573f';
 }
