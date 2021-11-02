@@ -1,8 +1,8 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="hScroll">
-    <name>hscroll</name>
+    <name>Horizontal scrollbar</name>
     <version>0.3</version>
-    <author>Franck Paul and contributors</author>
+    <author>Horizontal scrollbar</author>
     <desc>Horizontal scrollbar</desc>
     <file>https://github.com/franck-paul/hScroll/releases/download/0.3/plugin-hScroll-0.3.zip</file>
     <da:dcmin>2.17</da:dcmin>
