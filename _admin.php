@@ -13,7 +13,9 @@
 
 namespace plugins\hscroll;
 
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 // dead but useful code, in order to have translations
 __('hscroll') . __('Horizontal scrollbar');
@@ -27,8 +29,8 @@ class hscrollBehaviors
     {
         # Style options
         $styles = [
-            __("Top")    => 'top',
-            __("Bottom") => 'bottom'
+            __('Top')    => 'top',
+            __('Bottom') => 'bottom',
         ];
 
         $settings->addNameSpace('hscroll');
@@ -70,7 +72,7 @@ class hscrollBehaviors
         $settings->addNameSpace('hscroll');
         $settings->hscroll->put('enabled', !empty($_POST['hscroll_enabled']), 'boolean');
         $settings->hscroll->put('position', $_POST['hscroll_position']);
-        $settings->hscroll->put('offset', (integer) $_POST['hscroll_offset']);
+        $settings->hscroll->put('offset', (int) $_POST['hscroll_offset']);
         $settings->hscroll->put('color', $_POST['hscroll_color']);
         $settings->hscroll->put('shadow', !empty($_POST['hscroll_shadow']));
         $settings->hscroll->put('single', !empty($_POST['hscroll_single']));

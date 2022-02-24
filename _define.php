@@ -20,15 +20,15 @@ $this->registerModule(
     'Franck Paul and contributors', // Author
     '0.3',                          // Version
     [
-        'requires'    => [['core', '2.17']],
+        'requires'    => [['core', '2.21']],
         'permissions' => 'admin',
         'type'        => 'plugin',
         'settings'    => [
-            'blog' => '#params.hscroll'
+            'blog' => '#params.hscroll',
         ],
 
         'details'    => 'https://open-time.net/?q=hscroll',       // Details URL
         'support'    => 'https://github.com/franck-paul/hscroll', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/hscroll/master/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/hscroll/master/dcstore.xml',
     ]
 );

@@ -13,7 +13,9 @@
 
 namespace plugins\hscroll;
 
-if (!defined('DC_RC_PATH')) {return;}
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
 $core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent']);
 $core->addBehavior('publicFooterContent', [__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent']);
@@ -40,21 +42,21 @@ class hscrollPublic
 
         $position = $core->blog->settings->hscroll->position;
         if (!in_array($position, ['top', 'bottom', 'user'])) {
-            $style = 'top';
+            $position = 'top';
         }
-        $offset = (integer) $core->blog->settings->hscroll->offset;
+        $offset = (int) $core->blog->settings->hscroll->offset;
 
         echo \dcUtils::jsJson('hscroll', [
             'color'  => ($core->blog->settings->hscroll->color ?: '#e9573f'),
-            'top'    => ($core->blog->settings->hscroll->position == 'top' ? "$offset" . 'px' : 'unset'),
-            'bottom' => ($core->blog->settings->hscroll->position == 'bottom' ? "$offset" . 'px' : 'unset'),
-            'shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0')
+            'top'    => ($position == 'top' ? "$offset" . 'px' : 'unset'),
+            'bottom' => ($position == 'bottom' ? "$offset" . 'px' : 'unset'),
+            'shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0'),
         ]);
 
         echo
-        \dcUtils::jsLoad($core->blog->getPF('util.js')) .
-        \dcUtils::jsLoad($core->blog->getPF('hScroll/js/cssvar.js')) .
-        \dcUtils::cssLoad($core->blog->getPF('hScroll/css/hscroll.css'));
+        \dcUtils::jsModuleLoad('util.js') .
+        \dcUtils::jsModuleLoad('hScroll/js/cssvar.js') .
+        \dcUtils::cssModuleLoad('hScroll/css/hscroll.css');
     }
 
     public static function publicFooterContent($core)
@@ -77,6 +79,6 @@ class hscrollPublic
 
         echo
         '<div id="hscroll-bar"><div id="hscroll-bar-inner"></div></div>' . "\n" .
-        \dcUtils::jsLoad($core->blog->getPF('hScroll/js/hscroll.js'));
+        \dcUtils::jsModuleLoad('hScroll/js/hscroll.js');
     }
 }
