@@ -5,9 +5,7 @@
   bottom: var(--hscroll-bottom);
   left: 0;
   z-index: 3000;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  backface-visibility: hidden
+  backface-visibility: hidden;
 }
 #hscroll-bar-inner {
   box-shadow: var(--hscroll-shadow);

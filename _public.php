@@ -17,40 +17,40 @@ if (!defined('DC_RC_PATH')) {
     return;
 }
 
-$core->addBehavior('publicHeadContent', [__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent']);
-$core->addBehavior('publicFooterContent', [__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent']);
+\dcCore::app()->addBehavior('publicHeadContent', [__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent']);
+\dcCore::app()->addBehavior('publicFooterContent', [__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent']);
 
 class hscrollPublic
 {
-    public static function publicHeadContent($core)
+    public static function publicHeadContent($core = null)
     {
-        $core->blog->settings->addNameSpace('hscroll');
-        if (!$core->blog->settings->hscroll->enabled) {
+        \dcCore::app()->blog->settings->addNameSpace('hscroll');
+        if (!\dcCore::app()->blog->settings->hscroll->enabled) {
             return;
         }
 
-        if ($core->blog->settings->hscroll->single) {
+        if (\dcCore::app()->blog->settings->hscroll->single) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
-            if ($core->plugins->moduleExists('pages')) {
+            if (\dcCore::app()->plugins->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array($core->url->type, $urlTypes)) {
+            if (!in_array(\dcCore::app()->url->type, $urlTypes)) {
                 return;
             }
         }
 
-        $position = $core->blog->settings->hscroll->position;
+        $position = \dcCore::app()->blog->settings->hscroll->position;
         if (!in_array($position, ['top', 'bottom', 'user'])) {
             $position = 'top';
         }
-        $offset = (int) $core->blog->settings->hscroll->offset;
+        $offset = (int) \dcCore::app()->blog->settings->hscroll->offset;
 
         echo \dcUtils::jsJson('hscroll', [
-            'color'  => ($core->blog->settings->hscroll->color ?: '#e9573f'),
+            'color'  => (\dcCore::app()->blog->settings->hscroll->color ?: '#e9573f'),
             'top'    => ($position == 'top' ? "$offset" . 'px' : 'unset'),
             'bottom' => ($position == 'bottom' ? "$offset" . 'px' : 'unset'),
-            'shadow' => ($core->blog->settings->hscroll->shadow ? '1' : '0'),
+            'shadow' => (\dcCore::app()->blog->settings->hscroll->shadow ? '1' : '0'),
         ]);
 
         echo
@@ -59,20 +59,20 @@ class hscrollPublic
         \dcUtils::cssModuleLoad('hScroll/css/hscroll.css');
     }
 
-    public static function publicFooterContent($core)
+    public static function publicFooterContent($core = null)
     {
-        $core->blog->settings->addNameSpace('hscroll');
-        if (!$core->blog->settings->hscroll->enabled) {
+        \dcCore::app()->blog->settings->addNameSpace('hscroll');
+        if (!\dcCore::app()->blog->settings->hscroll->enabled) {
             return;
         }
 
-        if ($core->blog->settings->hscroll->single) {
+        if (\dcCore::app()->blog->settings->hscroll->single) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
-            if ($core->plugins->moduleExists('pages')) {
+            if (\dcCore::app()->plugins->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array($core->url->type, $urlTypes)) {
+            if (!in_array(\dcCore::app()->url->type, $urlTypes)) {
                 return;
             }
         }
