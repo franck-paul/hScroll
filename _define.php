@@ -18,7 +18,7 @@ $this->registerModule(
     'hscroll',                      // Name
     'Horizontal scrollbar',         // Description
     'Franck Paul and contributors', // Author
-    '0.4',
+    '0.4.1',
     [
         'requires'    => [['core', '2.23']],
         'permissions' => 'admin',

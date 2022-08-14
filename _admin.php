@@ -25,7 +25,7 @@ __('hscroll') . __('Horizontal scrollbar');
 
 class hscrollBehaviors
 {
-    public static function adminBlogPreferencesForm($core = null, $settings)
+    public static function adminBlogPreferencesForm($core, $settings)
     {
         # Style options
         $styles = [
