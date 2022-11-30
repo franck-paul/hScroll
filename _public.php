@@ -22,7 +22,7 @@ if (!defined('DC_RC_PATH')) {
 
 class hscrollPublic
 {
-    public static function publicHeadContent($core = null)
+    public static function publicHeadContent()
     {
         \dcCore::app()->blog->settings->addNameSpace('hscroll');
         if (!\dcCore::app()->blog->settings->hscroll->enabled) {
@@ -59,7 +59,7 @@ class hscrollPublic
         \dcUtils::cssModuleLoad('hScroll/css/hscroll.css');
     }
 
-    public static function publicFooterContent($core = null)
+    public static function publicFooterContent()
     {
         \dcCore::app()->blog->settings->addNameSpace('hscroll');
         if (!\dcCore::app()->blog->settings->hscroll->enabled) {

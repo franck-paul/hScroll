@@ -15,20 +15,22 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'hscroll',                      // Name
-    'Horizontal scrollbar',         // Description
-    'Franck Paul and contributors', // Author
-    '0.4.1',
+    'hscroll',
+    'Horizontal scrollbar',
+    'Franck Paul and contributors',
+    '1.0',
     [
-        'requires'    => [['core', '2.23']],
-        'permissions' => 'admin',
-        'type'        => 'plugin',
-        'settings'    => [
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_ADMIN,
+        ]),
+        'type'     => 'plugin',
+        'settings' => [
             'blog' => '#params.hscroll',
         ],
 
-        'details'    => 'https://open-time.net/?q=hscroll',       // Details URL
-        'support'    => 'https://github.com/franck-paul/hscroll', // Support URL
+        'details'    => 'https://open-time.net/?q=hscroll',
+        'support'    => 'https://github.com/franck-paul/hscroll',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/hscroll/master/dcstore.xml',
     ]
 );

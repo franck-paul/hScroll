@@ -20,12 +20,12 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 // dead but useful code, in order to have translations
 __('hscroll') . __('Horizontal scrollbar');
 
-\dcCore::app()->addBehavior('adminBlogPreferencesForm', [__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm']);
+\dcCore::app()->addBehavior('adminBlogPreferencesFormV2', [__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm']);
 \dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', [__NAMESPACE__ . '\hscrollBehaviors', 'adminBeforeBlogSettingsUpdate']);
 
 class hscrollBehaviors
 {
-    public static function adminBlogPreferencesForm($core, $settings)
+    public static function adminBlogPreferencesForm($settings)
     {
         # Style options
         $styles = [
