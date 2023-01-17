@@ -11,7 +11,7 @@
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Dotclear\Plugins\hScroll;
+namespace Dotclear\Plugin\hScroll;
 
 use dcCore;
 use form;
@@ -24,11 +24,11 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 __('hscroll') . __('Horizontal scrollbar');
 
 dcCore::app()->addBehaviors([
-    'adminBlogPreferencesFormV2'    => [__NAMESPACE__ . '\hscrollBehaviors', 'adminBlogPreferencesForm'],
-    'adminBeforeBlogSettingsUpdate' => [__NAMESPACE__ . '\hscrollBehaviors', 'adminBeforeBlogSettingsUpdate'],
+    'adminBlogPreferencesFormV2'    => [adminBehaviors::class, 'adminBlogPreferencesForm'],
+    'adminBeforeBlogSettingsUpdate' => [adminBehaviors::class, 'adminBeforeBlogSettingsUpdate'],
 ]);
 
-class hscrollBehaviors
+class adminBehaviors
 {
     public static function adminBlogPreferencesForm($settings)
     {

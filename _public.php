@@ -11,7 +11,7 @@
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 
-namespace Dotclear\Plugins\hScroll;
+namespace Dotclear\Plugin\hScroll;
 
 use dcCore;
 use dcUtils;
@@ -21,11 +21,11 @@ if (!defined('DC_RC_PATH')) {
 }
 
 dcCore::app()->addBehaviors([
-    'publicHeadContent'   => [__NAMESPACE__ . '\hscrollPublic', 'publicHeadContent'],
-    'publicFooterContent' => [__NAMESPACE__ . '\hscrollPublic', 'publicFooterContent'],
+    'publicHeadContent'   => [publicBehaviors::class, 'publicHeadContent'],
+    'publicFooterContent' => [publicBehaviors::class, 'publicFooterContent'],
 ]);
 
-class hscrollPublic
+class publicBehaviors
 {
     public static function publicHeadContent()
     {

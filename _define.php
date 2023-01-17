@@ -18,19 +18,19 @@ $this->registerModule(
     'hscroll',
     'Horizontal scrollbar',
     'Franck Paul and contributors',
-    '1.0',
+    '1.1',
     [
         'requires'    => [['core', '2.24']],
         'permissions' => dcCore::app()->auth->makePermissions([
             dcAuth::PERMISSION_ADMIN,
         ]),
-        'type'     => 'plugin',
-        'settings' => [
+        'type'        => 'plugin',
+        'settings'    => [
             'blog' => '#params.hscroll',
         ],
 
-        'details'    => 'https://open-time.net/?q=hscroll',
-        'support'    => 'https://github.com/franck-paul/hscroll',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/hscroll/master/dcstore.xml',
+        'details'     => 'https://open-time.net/?q=hscroll',
+        'support'     => 'https://github.com/franck-paul/hscroll',
+        'repository'  => 'https://raw.githubusercontent.com/franck-paul/hscroll/master/dcstore.xml',
     ]
 );

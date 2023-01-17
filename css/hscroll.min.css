@@ -1,1 +1,1 @@
-#hscroll-bar{height:4px;position:fixed;top:var(--hscroll-top);bottom:var(--hscroll-bottom);left:0;z-index:3000;backface-visibility:hidden}#hscroll-bar-inner{box-shadow:var(--hscroll-shadow);height:100%;background-color:var(--hscroll-color)}
+#hscroll-bar{height:4px;position:fixed;top:var(--hscroll-top,0);bottom:var(--hscroll-bottom,unset);left:0;z-index:3000;backface-visibility:hidden}#hscroll-bar-inner{box-shadow:var(--hscroll-shadow,unset);height:100%;background-color:var(--hscroll-color,#e9573f)}
