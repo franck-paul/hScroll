@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 hScroll module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-07 12:36+0100\n"
+"POT-Creation-Date: 2023-05-06 12:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,11 +28,14 @@ msgstr "Haute"
 msgid "Bottom"
 msgstr "Basse"
 
+msgid "hScroll"
+msgstr ""
+
 msgid "Enable horizontal scrollbar"
 msgstr "Activer la barre de lecture horizontale"
 
-msgid "Position:"
-msgstr "Position :"
+msgid "Options"
+msgstr ""
 
 msgid "Offset position (in pixels):"
 msgstr "Décalage vertical (en pixels) :"
@@ -45,3 +48,6 @@ msgstr "Ajouter une ombre à la barre"
 
 msgid "Activate only in single entry context"
 msgstr "Activer seulement dans les contextes de publication simple (billet, page)"
+
+#~ msgid "Position:"
+#~ msgstr "Position :"

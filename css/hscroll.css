@@ -1,7 +1,7 @@
 #hscroll-bar {
   height: 4px;
   position: fixed;
-  top: var(--hscroll-top, 0);
+  top: var(--hscroll-top, unset);
   bottom: var(--hscroll-bottom, unset);
   left: 0;
   z-index: 3000;
