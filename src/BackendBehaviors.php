@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\hScroll;
 
 use dcCore;
+use dcNamespace;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Color;
 use Dotclear\Helper\Html\Form\Fieldset;
@@ -81,11 +82,11 @@ class BackendBehaviors
     {
         $settings = dcCore::app()->blog->settings->get(My::id());
 
-        $settings->put('enabled', !empty($_POST['hscroll_enabled']), 'boolean');
-        $settings->put('position', $_POST['hscroll_position']);
-        $settings->put('offset', (int) $_POST['hscroll_offset']);
-        $settings->put('color', $_POST['hscroll_color']);
-        $settings->put('shadow', !empty($_POST['hscroll_shadow']));
-        $settings->put('single', !empty($_POST['hscroll_single']));
+        $settings->put('enabled', !empty($_POST['hscroll_enabled']), dcNamespace::NS_BOOL);
+        $settings->put('position', $_POST['hscroll_position'], dcNamespace::NS_STRING);
+        $settings->put('offset', (int) $_POST['hscroll_offset'], dcNamespace::NS_INT);
+        $settings->put('color', $_POST['hscroll_color'], dcNamespace::NS_STRING);
+        $settings->put('shadow', !empty($_POST['hscroll_shadow']), dcNamespace::NS_BOOL);
+        $settings->put('single', !empty($_POST['hscroll_single']), dcNamespace::NS_BOOL);
     }
 }
