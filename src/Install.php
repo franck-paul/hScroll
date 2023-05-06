@@ -37,6 +37,7 @@ class Install extends dcNsProcess
 
         try {
             $old_version = dcCore::app()->getVersion(My::id());
+
             if (version_compare((string) $old_version, '2.0', '<')) {
                 // Rename settings namespace
                 if (dcCore::app()->blog->settings->exists('hscroll')) {
