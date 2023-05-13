@@ -1,10 +1,10 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="hScroll">
     <name>hscroll</name>
-    <version>2.0</version>
+    <version>2.1</version>
     <author>Franck Paul and contributors</author>
     <desc>Horizontal scrollbar</desc>
-    <file>https://github.com/franck-paul/hScroll/releases/download/2.0/plugin-hScroll-2.0.zip</file>
+    <file>https://github.com/franck-paul/hScroll/releases/download/2.1/plugin-hScroll-2.1.zip</file>
     <da:dcmin>2.26</da:dcmin>
     <da:details>https://open-time.net/?q=hscroll</da:details>
     <da:support>https://github.com/franck-paul/hscroll</da:support>
