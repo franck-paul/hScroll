@@ -1,4 +1,4 @@
-# Source
+# hScroll
 
 [![Release](https://img.shields.io/github/v/release/franck-paul/hScroll)](https://github.com/franck-paul/hScroll/releases)
 [![Date](https://img.shields.io/github/release-date/franck-paul/hScroll)](https://github.com/franck-paul/hScroll/releases)
