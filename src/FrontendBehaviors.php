@@ -52,9 +52,9 @@ class FrontendBehaviors
         ]);
 
         echo
-        dcUtils::jsModuleLoad('util.js') .
-        dcUtils::jsModuleLoad(My::id() . '/js/cssvar.js') .
-        dcUtils::cssModuleLoad(My::id() . '/css/hscroll.css');
+        dcUtils::jsLoad('util.js') .
+        My::jsLoad('cssvar.js') .
+        My::cssLoad('hscroll.css');
     }
 
     public static function publicFooterContent()
@@ -78,6 +78,6 @@ class FrontendBehaviors
 
         echo
         '<div id="hscroll-bar"><div id="hscroll-bar-inner"></div></div>' . "\n" .
-        dcUtils::jsModuleLoad(My::id() . '/js/hscroll.js');
+        My::jsLoad('hscroll.js');
     }
 }
