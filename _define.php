@@ -14,7 +14,7 @@ $this->registerModule(
     'hscroll',
     'Horizontal scrollbar',
     'Franck Paul and contributors',
-    '2.1.2',
+    '3.0',
     [
         'requires'    => [['core', '2.27'], ['php', '8.1']],
         'permissions' => dcCore::app()->auth->makePermissions([
