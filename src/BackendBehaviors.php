@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\hScroll;
 
-use dcCore;
 use dcNamespace;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Color;
@@ -30,7 +29,7 @@ class BackendBehaviors
 {
     public static function adminBlogPreferencesForm()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         # Style options
         $styles = [
@@ -80,7 +79,7 @@ class BackendBehaviors
 
     public static function adminBeforeBlogSettingsUpdate($settings)
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         $settings->put('enabled', !empty($_POST['hscroll_enabled']), dcNamespace::NS_BOOL);
         $settings->put('position', $_POST['hscroll_position'], dcNamespace::NS_STRING);

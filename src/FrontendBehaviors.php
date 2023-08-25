@@ -21,7 +21,7 @@ class FrontendBehaviors
 {
     public static function publicHeadContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         if (!$settings->enabled) {
             return;
@@ -59,7 +59,7 @@ class FrontendBehaviors
 
     public static function publicFooterContent()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         if (!$settings->enabled) {
             return;
