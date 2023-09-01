@@ -52,7 +52,7 @@ class FrontendBehaviors
         ]);
 
         echo
-        dcUtils::jsLoad('util.js') .
+        dcUtils::jsLoad(dcCore::app()->blog->getPF('util.js')) .
         My::jsLoad('cssvar.js') .
         My::cssLoad('hscroll.css');
     }
