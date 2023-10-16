@@ -27,7 +27,7 @@ use Dotclear\Helper\Html\Form\Text;
 
 class BackendBehaviors
 {
-    public static function adminBlogPreferencesForm()
+    public static function adminBlogPreferencesForm(): string
     {
         $settings = My::settings();
 
@@ -75,9 +75,11 @@ class BackendBehaviors
             ]),
         ])
         ->render();
+
+        return '';
     }
 
-    public static function adminBeforeBlogSettingsUpdate($settings)
+    public static function adminBeforeBlogSettingsUpdate(): string
     {
         $settings = My::settings();
 
@@ -87,5 +89,7 @@ class BackendBehaviors
         $settings->put('color', $_POST['hscroll_color'], dcNamespace::NS_STRING);
         $settings->put('shadow', !empty($_POST['hscroll_shadow']), dcNamespace::NS_BOOL);
         $settings->put('single', !empty($_POST['hscroll_single']), dcNamespace::NS_BOOL);
+
+        return '';
     }
 }

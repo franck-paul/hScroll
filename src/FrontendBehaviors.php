@@ -19,12 +19,12 @@ use dcUtils;
 
 class FrontendBehaviors
 {
-    public static function publicHeadContent()
+    public static function publicHeadContent(): string
     {
         $settings = My::settings();
 
         if (!$settings->enabled) {
-            return;
+            return '';
         }
 
         if ($settings->single) {
@@ -34,7 +34,7 @@ class FrontendBehaviors
                 $urlTypes[] = 'page';
             }
             if (!in_array(dcCore::app()->url->type, $urlTypes)) {
-                return;
+                return '';
             }
         }
 
@@ -55,14 +55,16 @@ class FrontendBehaviors
         dcUtils::jsLoad(dcCore::app()->blog->getPF('util.js')) .
         My::jsLoad('cssvar.js') .
         My::cssLoad('hscroll.css');
+
+        return '';
     }
 
-    public static function publicFooterContent()
+    public static function publicFooterContent(): string
     {
         $settings = My::settings();
 
         if (!$settings->enabled) {
-            return;
+            return '';
         }
 
         if ($settings->single) {
@@ -72,12 +74,14 @@ class FrontendBehaviors
                 $urlTypes[] = 'page';
             }
             if (!in_array(dcCore::app()->url->type, $urlTypes)) {
-                return;
+                return '';
             }
         }
 
         echo
         '<div id="hscroll-bar"><div id="hscroll-bar-inner"></div></div>' . "\n" .
         My::jsLoad('hscroll.js');
+
+        return '';
     }
 }
