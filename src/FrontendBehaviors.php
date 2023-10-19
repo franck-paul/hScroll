@@ -16,6 +16,7 @@ namespace Dotclear\Plugin\hScroll;
 
 use dcCore;
 use dcUtils;
+use Dotclear\App;
 
 class FrontendBehaviors
 {
@@ -52,7 +53,7 @@ class FrontendBehaviors
         ]);
 
         echo
-        dcUtils::jsLoad(dcCore::app()->blog->getPF('util.js')) .
+        dcUtils::jsLoad(App::blog()->getPF('util.js')) .
         My::jsLoad('cssvar.js') .
         My::cssLoad('hscroll.css');
 
