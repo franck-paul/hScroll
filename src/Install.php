@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\hScroll;
 
-use dcCore;
 use Dotclear\App;
 use Dotclear\Core\Process;
 use Exception;
@@ -33,17 +32,17 @@ class Install extends Process
         }
 
         try {
-            $old_version = dcCore::app()->getVersion(My::id());
+            $old_version = App::version()->getVersion(My::id());
 
             if (version_compare((string) $old_version, '2.0', '<')) {
                 // Rename settings namespace
                 if (App::blog()->settings()->exists('hscroll')) {
-                    App::blog()->settings()->delNamespace(My::id());
-                    App::blog()->settings()->renNamespace('hscroll', My::id());
+                    App::blog()->settings()->delWorkspace(My::id());
+                    App::blog()->settings()->renWorkspace('hscroll', My::id());
                 }
             }
         } catch (Exception $e) {
-            dcCore::app()->error->add($e->getMessage());
+            App::error()->add($e->getMessage());
         }
 
         return true;

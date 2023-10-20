@@ -14,9 +14,8 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\hScroll;
 
-use dcCore;
-use dcUtils;
 use Dotclear\App;
+use Dotclear\Helper\Html\Html;
 
 class FrontendBehaviors
 {
@@ -31,10 +30,10 @@ class FrontendBehaviors
         if ($settings->single) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
-            if (dcCore::app()->plugins->moduleExists('pages')) {
+            if (App::plugins()->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array(dcCore::app()->url->type, $urlTypes)) {
+            if (!in_array(App::url()->type, $urlTypes)) {
                 return '';
             }
         }
@@ -45,7 +44,7 @@ class FrontendBehaviors
         }
         $offset = (int) $settings->offset;
 
-        echo dcUtils::jsJson('hscroll', [
+        echo Html::jsJson('hscroll', [
             'color'  => ($settings->color ?: '#e9573f'),
             'top'    => ($position == 'top' ? "$offset" . 'px' : 'unset'),
             'bottom' => ($position == 'bottom' ? "$offset" . 'px' : 'unset'),
@@ -53,7 +52,7 @@ class FrontendBehaviors
         ]);
 
         echo
-        dcUtils::jsLoad(App::blog()->getPF('util.js')) .
+        App::plugins()->jsLoad(App::blog()->getPF('util.js')) .
         My::jsLoad('cssvar.js') .
         My::cssLoad('hscroll.css');
 
@@ -71,10 +70,10 @@ class FrontendBehaviors
         if ($settings->single) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
-            if (dcCore::app()->plugins->moduleExists('pages')) {
+            if (App::plugins()->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array(dcCore::app()->url->type, $urlTypes)) {
+            if (!in_array(App::url()->type, $urlTypes)) {
                 return '';
             }
         }
