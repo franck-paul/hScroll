@@ -34,15 +34,13 @@ class Install extends Process
         try {
             $old_version = App::version()->getVersion(My::id());
 
-            if (version_compare((string) $old_version, '2.0', '<')) {
-                // Rename settings namespace
-                if (App::blog()->settings()->exists('hscroll')) {
-                    App::blog()->settings()->delWorkspace(My::id());
-                    App::blog()->settings()->renWorkspace('hscroll', My::id());
-                }
+            // Rename settings namespace
+            if (version_compare((string) $old_version, '2.0', '<') && App::blog()->settings()->exists('hscroll')) {
+                App::blog()->settings()->delWorkspace(My::id());
+                App::blog()->settings()->renWorkspace('hscroll', My::id());
             }
-        } catch (Exception $e) {
-            App::error()->add($e->getMessage());
+        } catch (Exception $exception) {
+            App::error()->add($exception->getMessage());
         }
 
         return true;

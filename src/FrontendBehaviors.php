@@ -33,7 +33,8 @@ class FrontendBehaviors
             if (App::plugins()->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array(App::url()->type, $urlTypes)) {
+
+            if (!in_array(App::url()->getType(), $urlTypes)) {
                 return '';
             }
         }
@@ -42,12 +43,13 @@ class FrontendBehaviors
         if (!in_array($position, ['top', 'bottom', 'user'])) {
             $position = 'top';
         }
+
         $offset = (int) $settings->offset;
 
         echo Html::jsJson('hscroll', [
             'color'  => ($settings->color ?: '#e9573f'),
-            'top'    => ($position == 'top' ? "$offset" . 'px' : 'unset'),
-            'bottom' => ($position == 'bottom' ? "$offset" . 'px' : 'unset'),
+            'top'    => ($position == 'top' ? '' . $offset . 'px' : 'unset'),
+            'bottom' => ($position == 'bottom' ? '' . $offset . 'px' : 'unset'),
             'shadow' => ($settings->shadow ? '1' : '0'),
         ]);
 
@@ -73,7 +75,8 @@ class FrontendBehaviors
             if (App::plugins()->moduleExists('pages')) {
                 $urlTypes[] = 'page';
             }
-            if (!in_array(App::url()->type, $urlTypes)) {
+
+            if (!in_array(App::url()->getType(), $urlTypes)) {
                 return '';
             }
         }
