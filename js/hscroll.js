@@ -2,6 +2,9 @@
 
 {
   const hscroll_bar = () => {
+    /**
+     * @type       {HTMLElement}
+     */
     const t = document.querySelector('#hscroll-bar');
     t.style.width = `${(window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100}%`;
   };
