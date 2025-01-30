@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief hScroll, a plugin for Dotclear 2
  *
@@ -41,7 +42,7 @@ class BackendBehaviors
 
         // Add fieldset for plugin options
         echo
-        (new Fieldset('adaptiveimages_settings'))
+        (new Fieldset('hscroll'))
         ->legend((new Legend(__('hScroll'))))
         ->fields([
             (new Para())->items([
