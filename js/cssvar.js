@@ -1,7 +1,8 @@
-/* global dotclear */
+/*global dotclear */
 'use strict';
 
-{
+dotclear.ready(() => {
+  // Loaded in Head
   const hscroll_data = dotclear.getData('hscroll');
   if (typeof hscroll_data.color === 'undefined') {
     hscroll_data.color = '#e9573f';
@@ -10,15 +11,14 @@
     hscroll_data.top = '0';
     hscroll_data.bottom = 'unset';
   }
-  if (typeof hscroll_data.shadow === 'undefined' || hscroll_data.shadow != '1') {
+  if (typeof hscroll_data.shadow === 'undefined' || !hscroll_data.shadow) {
     hscroll_data.shadow = 'unset';
-  } else if (hscroll_data.top == '0') {
+  } else if (hscroll_data.top === '0') {
     hscroll_data.shadow = '1px 1px 4px rgba(0, 0, 0, 0.5)';
   } else {
     hscroll_data.shadow = '1px -1px 4px rgba(0, 0, 0, 0.5)';
   }
-  document.documentElement.style.setProperty('--hscroll-color', hscroll_data.color);
-  document.documentElement.style.setProperty('--hscroll-top', hscroll_data.top);
-  document.documentElement.style.setProperty('--hscroll-bottom', hscroll_data.bottom);
-  document.documentElement.style.setProperty('--hscroll-shadow', hscroll_data.shadow);
-}
+  for (const param of Object.getOwnPropertyNames(hscroll_data)) {
+    document.documentElement.style.setProperty(`--hscroll-${param}`, hscroll_data[param]);
+  }
+});

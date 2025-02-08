@@ -1,13 +1,16 @@
+/*global dotclear */
 'use strict';
 
-{
-  const hscroll_bar = () => {
+dotclear.ready(() => {
+  // Loaded in Body
+  const updateScrollbar = () => {
     /**
      * @type       {HTMLElement}
      */
-    const t = document.querySelector('#hscroll-bar');
-    t.style.width = `${(window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100}%`;
+    const scrollbar = document.querySelector('#hscroll-bar');
+    scrollbar.style.width = `${(window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100}%`;
   };
-  window.addEventListener('load', hscroll_bar);
-  window.addEventListener('scroll', hscroll_bar);
-}
+  window.addEventListener('load', updateScrollbar);
+  window.addEventListener('scroll', updateScrollbar);
+  updateScrollbar();
+});

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief hScroll, a plugin for Dotclear 2
  *

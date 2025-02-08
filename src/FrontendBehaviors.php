@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief hScroll, a plugin for Dotclear 2
  *
@@ -44,13 +45,11 @@ class FrontendBehaviors
             $position = 'top';
         }
 
-        $offset = (int) $settings->offset;
-
         echo Html::jsJson('hscroll', [
-            'color'  => ($settings->color ?: '#e9573f'),
-            'top'    => ($position == 'top' ? '' . $offset . 'px' : 'unset'),
-            'bottom' => ($position == 'bottom' ? '' . $offset . 'px' : 'unset'),
-            'shadow' => ($settings->shadow ? '1' : '0'),
+            'color'  => $settings->color ?: '#e9573f',
+            'top'    => $position == 'top' ? $settings->offset . 'px' : 'unset',
+            'bottom' => $position == 'bottom' ? $settings->offset . 'px' : 'unset',
+            'shadow' => $settings->shadow,
         ]);
 
         echo
