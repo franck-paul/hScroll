@@ -28,5 +28,6 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=hscroll',
         'support'    => 'https://github.com/franck-paul/hscroll',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/hscroll/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );

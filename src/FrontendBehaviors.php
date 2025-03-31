@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\hScroll;
 
 use Dotclear\App;
+use Dotclear\Helper\Html\Form\Div;
 use Dotclear\Helper\Html\Html;
 
 class FrontendBehaviors
@@ -80,8 +81,11 @@ class FrontendBehaviors
             }
         }
 
-        echo
-        '<div id="hscroll-bar"><div id="hscroll-bar-inner"></div></div>' . "\n" .
+        echo (new Div('hscroll-bar'))
+            ->items([
+                (new Div('hscroll-bar-inner')),
+            ])
+        ->render() .
         My::jsLoad('hscroll.js');
 
         return '';
