@@ -48,8 +48,8 @@ class FrontendBehaviors
 
         echo Html::jsJson('hscroll', [
             'color'  => $settings->color ?: '#e9573f',
-            'top'    => $position == 'top' ? $settings->offset . 'px' : 'unset',
-            'bottom' => $position == 'bottom' ? $settings->offset . 'px' : 'unset',
+            'top'    => $position === 'top' ? $settings->offset . 'px' : 'unset',
+            'bottom' => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
             'shadow' => $settings->shadow,
         ]);
 
