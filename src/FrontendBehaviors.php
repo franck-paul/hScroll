@@ -33,9 +33,8 @@ class FrontendBehaviors
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
-                $urlTypes[] = 'page';
+                $urlTypes[] = 'pages';
             }
-
             if (!in_array(App::url()->getType(), $urlTypes)) {
                 return '';
             }
@@ -73,7 +72,7 @@ class FrontendBehaviors
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
-                $urlTypes[] = 'page';
+                $urlTypes[] = 'pages';
             }
 
             if (!in_array(App::url()->getType(), $urlTypes)) {
