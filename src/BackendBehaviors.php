@@ -34,8 +34,10 @@ class BackendBehaviors
 
         # Style options
         $styles = [
-            __('Top')    => 'top',
-            __('Bottom') => 'bottom',
+            __('At top')    => 'top',
+            __('At bottom') => 'bottom',
+            __('At left')   => 'left',
+            __('At right')  => 'right',
         ];
 
         $color = ($settings->color ?: '#e9573f');
@@ -48,13 +50,14 @@ class BackendBehaviors
             (new Para())->items([
                 (new Checkbox('hscroll_enabled', (bool) $settings->enabled))
                     ->value(1)
-                    ->label((new Label(__('Enable horizontal scrollbar'), Label::INSIDE_TEXT_AFTER))),
+                    ->label((new Label(__('Enable horizontal or vertical reading scrollbar'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Text('h5', __('Options'))),
             (new Para())->items([
                 (new Select('hscroll_position'))
                     ->items($styles)
-                    ->default($settings->position),
+                    ->default($settings->position)
+                    ->label((new Label(__('Position:'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
                 (new Number('hscroll_offset', 0, 9_999, (int) $settings->offset))

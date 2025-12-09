@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 hScroll module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-05-13 11:11+0200\n"
+"POT-Creation-Date: 2025-12-09 07:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,25 +16,31 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Horizontal scrollbar"
-msgstr ""
-
-msgid "hscroll"
-msgstr ""
-
-msgid "Top"
-msgstr ""
-
-msgid "Bottom"
-msgstr ""
-
 msgid "hScroll"
 msgstr ""
 
-msgid "Enable horizontal scrollbar"
+msgid "Horizontal or vertical reading scrollbar"
+msgstr ""
+
+msgid "At top"
+msgstr ""
+
+msgid "At bottom"
+msgstr ""
+
+msgid "At left"
+msgstr ""
+
+msgid "At right"
+msgstr ""
+
+msgid "Enable horizontal or vertical reading scrollbar"
 msgstr ""
 
 msgid "Options"
+msgstr ""
+
+msgid "Position:"
 msgstr ""
 
 msgid "Offset position (in pixels):"

@@ -3,14 +3,17 @@
 
 dotclear.ready(() => {
   // Loaded in Body
+  const scrollbar = document.getElementById('hscroll-bar');
+  if (!scrollbar) {
+    return;
+  }
+  const vertical = scrollbar.classList.contains('vertical');
   const updateScrollbar = () => {
-    /**
-     * @type       {HTMLElement}
-     */
-    const scrollbar = document.querySelector('#hscroll-bar');
-    scrollbar.style.width = `${(window.scrollY / (document.body.clientHeight - window.innerHeight)) * 100}%`;
+    const position = `${(globalThis.scrollY / (document.body.clientHeight - globalThis.innerHeight)) * 100}%`;
+    if (vertical) scrollbar.style.height = position;
+    else scrollbar.style.width = position;
   };
-  window.addEventListener('load', updateScrollbar);
-  window.addEventListener('scroll', updateScrollbar);
+  globalThis.addEventListener('load', updateScrollbar);
+  globalThis.addEventListener('scroll', updateScrollbar);
   updateScrollbar();
 });

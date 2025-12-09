@@ -12,8 +12,8 @@
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
 $this->registerModule(
-    'hscroll',
-    'Horizontal scrollbar',
+    'hScroll',
+    'Horizontal or vertical reading scrollbar',
     'Franck Paul and contributors',
     '5.0',
     [

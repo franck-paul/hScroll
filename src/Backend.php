@@ -25,8 +25,8 @@ class Backend
     public static function init(): bool
     {
         // dead but useful code, in order to have translations
-        __('hscroll');
-        __('Horizontal scrollbar');
+        __('hScroll');
+        __('Horizontal or vertical reading scrollbar');
 
         return self::status(My::checkContext(My::BACKEND));
     }

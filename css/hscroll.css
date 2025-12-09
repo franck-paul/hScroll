@@ -1,11 +1,20 @@
 #hscroll-bar {
-  height: 4px;
   position: fixed;
+  height: 4px;
+  width: 0;
   top: var(--hscroll-top, unset);
   bottom: var(--hscroll-bottom, unset);
   left: 0;
   z-index: 3000;
   backface-visibility: hidden;
+  &.vertical {
+    height: 0;
+    width: 4px;
+    top: 0;
+    bottom: unset;
+    left: var(--hscroll-left, unset);
+    right: var(--hscroll-right, unset);
+  }
 }
 #hscroll-bar-inner {
   box-shadow: var(--hscroll-shadow, unset);

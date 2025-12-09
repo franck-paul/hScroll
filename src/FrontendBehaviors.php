@@ -41,15 +41,19 @@ class FrontendBehaviors
         }
 
         $position = $settings->position;
-        if (!in_array($position, ['top', 'bottom', 'user'])) {
+        if (!in_array($position, ['top', 'bottom', 'left', 'right'])) {
             $position = 'top';
         }
 
         echo Html::jsJson('hscroll', [
-            'color'  => $settings->color ?: '#e9573f',
-            'top'    => $position === 'top' ? $settings->offset . 'px' : 'unset',
-            'bottom' => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
-            'shadow' => $settings->shadow,
+            'color'    => $settings->color ?: '#e9573f',
+            'top'      => $position !== 'bottom' ? $settings->offset . 'px' : 'unset',
+            'bottom'   => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
+            'left'     => $position === 'left' ? $settings->offset . 'px' : 'unset',
+            'right'    => $position === 'right' ? $settings->offset . 'px' : 'unset',
+            'vertical' => $position === 'left' || $position === 'right',
+            'shadow'   => $settings->shadow,
+            'position' => $settings->position,
         ]);
 
         echo
@@ -81,6 +85,7 @@ class FrontendBehaviors
         }
 
         echo (new Div('hscroll-bar'))
+            ->class($settings->position === 'left' || $settings->position === 'right' ? 'vertical' : '')
             ->items([
                 (new Div('hscroll-bar-inner')),
             ])
