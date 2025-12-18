@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 hScroll module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 07:55+0100\n"
+"POT-Creation-Date: 2025-12-18 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: ../git-plugins/hScroll/src/Backend.php:28
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:48
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:50
 msgid "hScroll"
 msgstr ""
 
@@ -41,30 +41,38 @@ msgstr ""
 msgid "At right"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:53
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:55
 msgid "Enable horizontal or vertical reading scrollbar"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:55
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:57
 msgid "Options"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:60
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:62
 msgid "Position:"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:64
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:66
 msgid "Offset position (in pixels):"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:68
-msgid "Scrollbar color:"
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:70
+msgid "Scrollbar width (in pixels):"
 msgstr ""
 
-#: ../git-plugins/hScroll/src/BackendBehaviors.php:73
-msgid "Add shadow to the scrollbar"
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:74
+msgid "Scrollbar color (light mode):"
 msgstr ""
 
 #: ../git-plugins/hScroll/src/BackendBehaviors.php:78
+msgid "Scrollbar color (dark mode):"
+msgstr ""
+
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:83
+msgid "Add shadow to the scrollbar"
+msgstr ""
+
+#: ../git-plugins/hScroll/src/BackendBehaviors.php:88
 msgid "Activate only in single entry context"
 msgstr ""

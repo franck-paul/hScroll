@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Dotclear 2 hScroll module\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-09 07:55+0100\n"
+"POT-Creation-Date: 2025-12-18 15:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,7 +46,13 @@ msgstr ""
 msgid "Offset position (in pixels):"
 msgstr ""
 
-msgid "Scrollbar color:"
+msgid "Scrollbar width (in pixels):"
+msgstr ""
+
+msgid "Scrollbar color (light mode):"
+msgstr ""
+
+msgid "Scrollbar color (dark mode):"
 msgstr ""
 
 msgid "Add shadow to the scrollbar"
