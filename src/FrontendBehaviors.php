@@ -46,14 +46,16 @@ class FrontendBehaviors
         }
 
         echo Html::jsJson('hscroll', [
-            'color'    => $settings->color ?: '#e9573f',
-            'top'      => $position !== 'bottom' ? $settings->offset . 'px' : 'unset',
-            'bottom'   => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
-            'left'     => $position === 'left' ? $settings->offset . 'px' : 'unset',
-            'right'    => $position === 'right' ? $settings->offset . 'px' : 'unset',
-            'vertical' => $position === 'left' || $position === 'right',
-            'shadow'   => $settings->shadow,
-            'position' => $settings->position,
+            'color'      => $settings->color ?: '#e9573f',
+            'color_dark' => $settings->color_dark ?: '#e9573f',
+            'top'        => $position !== 'bottom' ? $settings->offset . 'px' : 'unset',
+            'bottom'     => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
+            'left'       => $position === 'left' ? $settings->offset . 'px' : 'unset',
+            'right'      => $position === 'right' ? $settings->offset . 'px' : 'unset',
+            'vertical'   => $position === 'left' || $position === 'right',
+            'shadow'     => $settings->shadow,
+            'position'   => $settings->position,
+            'width'      => ($settings->width ?: 4) . 'px',
         ]);
 
         echo

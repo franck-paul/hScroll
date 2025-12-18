@@ -1,6 +1,6 @@
 #hscroll-bar {
   position: fixed;
-  height: 4px;
+  height: var(--hscroll-width, 4px);
   width: 0;
   top: var(--hscroll-top, unset);
   bottom: var(--hscroll-bottom, unset);
@@ -9,7 +9,7 @@
   backface-visibility: hidden;
   &.vertical {
     height: 0;
-    width: 4px;
+    width: var(--hscroll-width, 4px);
     top: 0;
     bottom: unset;
     left: var(--hscroll-left, unset);
@@ -19,5 +19,5 @@
 #hscroll-bar-inner {
   box-shadow: var(--hscroll-shadow, unset);
   height: 100%;
-  background-color: var(--hscroll-color, #e9573f);
+  background-color: light-dark(var(--hscroll-color, #e9573f), var(--hscroll-color_dark, #e9573f));
 }

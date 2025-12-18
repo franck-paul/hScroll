@@ -5,7 +5,16 @@ dotclear.ready(() => {
   // Loaded in Head
   const hscroll_data = dotclear.getData('hscroll');
   if (hscroll_data.color === undefined) {
+    // Default light mode color
     hscroll_data.color = '#e9573f';
+  }
+  if (hscroll_data.color_dark === undefined) {
+    // Default dark mode color
+    hscroll_data.color_dark = '#e9573f';
+  }
+  if (hscroll_data.width === undefined) {
+    // Défault width
+    hscroll_data.width = '4px';
   }
 
   if (hscroll_data.top === undefined) hscroll_data.top = 'unset';
@@ -30,7 +39,7 @@ dotclear.ready(() => {
   hscroll_data.shadow =
     hscroll_data.shadow === undefined || !hscroll_data.shadow
       ? 'unset'
-      : `${offset} 4px color-mix(in srgb, currentColor, rgb(255, 255, 255) 50%)`;
+      : `${offset} ${hscroll_data.width} color-mix(in srgb, currentColor, rgb(255, 255, 255) 50%)`;
 
   for (const param of Object.getOwnPropertyNames(hscroll_data)) {
     document.documentElement.style.setProperty(`--hscroll-${param}`, hscroll_data[param]);

@@ -40,7 +40,9 @@ class BackendBehaviors
             __('At right')  => 'right',
         ];
 
-        $color = ($settings->color ?: '#e9573f');
+        $color      = ($settings->color ?: '#e9573f');
+        $color_dark = ($settings->color_dark ?: '#e9573f');
+        $width      = ($settings->width ?: 4);
 
         // Add fieldset for plugin options
         echo
@@ -64,8 +66,16 @@ class BackendBehaviors
                     ->label((new Label(__('Offset position (in pixels):'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
+                (new Number('hscroll_width', 1, 99, $width))
+                    ->label((new Label(__('Scrollbar width (in pixels):'), Label::INSIDE_TEXT_BEFORE))),
+            ]),
+            (new Para())->items([
                 (new Color('hscroll_color', $color))
-                    ->label((new Label(__('Scrollbar color:'), Label::INSIDE_TEXT_BEFORE))),
+                    ->label((new Label(__('Scrollbar color (light mode):'), Label::INSIDE_TEXT_BEFORE))),
+            ]),
+            (new Para())->items([
+                (new Color('hscroll_color_dark', $color_dark))
+                    ->label((new Label(__('Scrollbar color (dark mode):'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
                 (new Checkbox('hscroll_shadow', (bool) $settings->shadow))
@@ -90,7 +100,9 @@ class BackendBehaviors
         $settings->put('enabled', !empty($_POST['hscroll_enabled']), App::blogWorkspace()::NS_BOOL);
         $settings->put('position', $_POST['hscroll_position'], App::blogWorkspace()::NS_STRING);
         $settings->put('offset', (int) $_POST['hscroll_offset'], App::blogWorkspace()::NS_INT);
+        $settings->put('width', (int) $_POST['hscroll_width'], App::blogWorkspace()::NS_INT);
         $settings->put('color', $_POST['hscroll_color'], App::blogWorkspace()::NS_STRING);
+        $settings->put('color_dark', $_POST['hscroll_color_dark'], App::blogWorkspace()::NS_STRING);
         $settings->put('shadow', !empty($_POST['hscroll_shadow']), App::blogWorkspace()::NS_BOOL);
         $settings->put('single', !empty($_POST['hscroll_single']), App::blogWorkspace()::NS_BOOL);
 
