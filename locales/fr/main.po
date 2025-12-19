@@ -48,7 +48,7 @@ msgid "Position:"
 msgstr "Position :"
 
 msgid "Offset position (in pixels):"
-msgstr "Décalage vertical (en pixels) :"
+msgstr "Décalage (en pixels) :"
 
 msgid "Scrollbar width (in pixels):"
 msgstr "Largeur de la barre de lecture (en pixels) :"
