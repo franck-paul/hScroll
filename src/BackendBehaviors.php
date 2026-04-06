@@ -32,6 +32,11 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
+        // Variable data helpers
+        $_Bool = fn (mixed $var): bool => (bool) $var;
+        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
+        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
         # Style options
         $styles = [
             __('At top')    => 'top',
@@ -40,9 +45,13 @@ class BackendBehaviors
             __('At right')  => 'right',
         ];
 
-        $color      = ($settings->color ?: '#e9573f');
-        $color_dark = ($settings->color_dark ?: '#e9573f');
-        $width      = ($settings->width ?: 4);
+        $position   = $_Str($settings->position, 'top');
+        $color      = $_Str($settings->color, '#e9573f');
+        $color_dark = $_Str($settings->color_dark, '#e9573f');
+        $offset     = $_Int($settings->offset);
+        $width      = $_Int($settings->width, 4);
+        $shadow     = $_Bool($settings->shadow);
+        $single     = $_Bool($settings->single);
 
         // Add fieldset for plugin options
         echo
@@ -58,11 +67,11 @@ class BackendBehaviors
             (new Para())->items([
                 (new Select('hscroll_position'))
                     ->items($styles)
-                    ->default($settings->position)
+                    ->default($position)
                     ->label((new Label(__('Position:'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
-                (new Number('hscroll_offset', 0, 9_999, (int) $settings->offset))
+                (new Number('hscroll_offset', 0, 9_999, $offset))
                     ->label((new Label(__('Offset position (in pixels):'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
@@ -78,12 +87,12 @@ class BackendBehaviors
                     ->label((new Label(__('Scrollbar color (dark mode):'), Label::INSIDE_TEXT_BEFORE))),
             ]),
             (new Para())->items([
-                (new Checkbox('hscroll_shadow', (bool) $settings->shadow))
+                (new Checkbox('hscroll_shadow', $shadow))
                     ->value(1)
                     ->label((new Label(__('Add shadow to the scrollbar'), Label::INSIDE_TEXT_AFTER))),
             ]),
             (new Para())->items([
-                (new Checkbox('hscroll_single', (bool) $settings->single))
+                (new Checkbox('hscroll_single', $single))
                     ->value(1)
                     ->label((new Label(__('Activate only in single entry context'), Label::INSIDE_TEXT_AFTER))),
             ]),
@@ -97,14 +106,19 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
-        $settings->put('enabled', !empty($_POST['hscroll_enabled']), App::blogWorkspace()::NS_BOOL);
-        $settings->put('position', $_POST['hscroll_position'], App::blogWorkspace()::NS_STRING);
-        $settings->put('offset', (int) $_POST['hscroll_offset'], App::blogWorkspace()::NS_INT);
-        $settings->put('width', (int) $_POST['hscroll_width'], App::blogWorkspace()::NS_INT);
-        $settings->put('color', $_POST['hscroll_color'], App::blogWorkspace()::NS_STRING);
-        $settings->put('color_dark', $_POST['hscroll_color_dark'], App::blogWorkspace()::NS_STRING);
-        $settings->put('shadow', !empty($_POST['hscroll_shadow']), App::blogWorkspace()::NS_BOOL);
-        $settings->put('single', !empty($_POST['hscroll_single']), App::blogWorkspace()::NS_BOOL);
+        // Post data helpers
+        $_Bool = fn (string $name): bool => !empty($_POST[$name]);
+        $_Int  = fn (string $name, int $default = 0): int => isset($_POST[$name]) && is_numeric($val = $_POST[$name]) ? (int) $val : $default;
+        $_Str  = fn (string $name, string $default = ''): string => isset($_POST[$name]) && is_string($val = $_POST[$name]) ? $val : $default;
+
+        $settings->put('enabled', $_Bool('hscroll_enabled'), App::blogWorkspace()::NS_BOOL);
+        $settings->put('position', $_Str('hscroll_position'), App::blogWorkspace()::NS_STRING);
+        $settings->put('offset', $_Int('hscroll_offset'), App::blogWorkspace()::NS_INT);
+        $settings->put('width', $_Int('hscroll_width'), App::blogWorkspace()::NS_INT);
+        $settings->put('color', $_Str('hscroll_color'), App::blogWorkspace()::NS_STRING);
+        $settings->put('color_dark', $_Str('hscroll_color_dark'), App::blogWorkspace()::NS_STRING);
+        $settings->put('shadow', $_Bool('hscroll_shadow'), App::blogWorkspace()::NS_BOOL);
+        $settings->put('single', $_Bool('hscroll_single'), App::blogWorkspace()::NS_BOOL);
 
         return '';
     }

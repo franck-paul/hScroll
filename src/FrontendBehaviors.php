@@ -29,7 +29,12 @@ class FrontendBehaviors
             return '';
         }
 
-        if ($settings->single) {
+        // Variable data helpers
+        $_Bool = fn (mixed $var): bool => (bool) $var;
+        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
+        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
+        if ($_Bool($settings->single)) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
@@ -40,22 +45,28 @@ class FrontendBehaviors
             }
         }
 
-        $position = $settings->position;
+        $position   = $_Str($settings->position, 'top');
+        $color      = $_Str($settings->color, '#e9573f');
+        $color_dark = $_Str($settings->color_dark, '#e9573f');
+        $offset     = $_Int($settings->offset);
+        $width      = $_Int($settings->width, 4);
+        $shadow     = $_Bool($settings->shadow);
+
         if (!in_array($position, ['top', 'bottom', 'left', 'right'])) {
             $position = 'top';
         }
 
         echo Html::jsJson('hscroll', [
-            'color'      => $settings->color ?: '#e9573f',
-            'color_dark' => $settings->color_dark ?: '#e9573f',
-            'top'        => $position !== 'bottom' ? $settings->offset . 'px' : 'unset',
-            'bottom'     => $position === 'bottom' ? $settings->offset . 'px' : 'unset',
-            'left'       => $position === 'left' ? $settings->offset . 'px' : 'unset',
-            'right'      => $position === 'right' ? $settings->offset . 'px' : 'unset',
+            'color'      => $color,
+            'color_dark' => $color_dark,
+            'top'        => $position !== 'bottom' ? $offset . 'px' : 'unset',
+            'bottom'     => $position === 'bottom' ? $offset . 'px' : 'unset',
+            'left'       => $position === 'left' ? $offset . 'px' : 'unset',
+            'right'      => $position === 'right' ? $offset . 'px' : 'unset',
             'vertical'   => $position === 'left' || $position === 'right',
-            'shadow'     => $settings->shadow,
-            'position'   => $settings->position,
-            'width'      => ($settings->width ?: 4) . 'px',
+            'shadow'     => $shadow,
+            'position'   => $position,
+            'width'      => $width . 'px',
         ]);
 
         echo
@@ -74,7 +85,11 @@ class FrontendBehaviors
             return '';
         }
 
-        if ($settings->single) {
+        // Variable data helpers
+        $_Bool = fn (mixed $var): bool => (bool) $var;
+        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
+
+        if ($_Bool($settings->single)) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
@@ -86,8 +101,10 @@ class FrontendBehaviors
             }
         }
 
+        $position = $_Str($settings->position, 'top');
+
         echo (new Div('hscroll-bar'))
-            ->class($settings->position === 'left' || $settings->position === 'right' ? 'vertical' : '')
+            ->class($position === 'left' || $position === 'right' ? 'vertical' : '')
             ->items([
                 (new Div('hscroll-bar-inner')),
             ])
