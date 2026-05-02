@@ -40,6 +40,7 @@ class FrontendBehaviors
             if (App::plugins()->moduleExists('pages')) {
                 $urlTypes[] = 'pages';
             }
+
             if (!in_array(App::url()->getType(), $urlTypes)) {
                 return '';
             }
@@ -52,7 +53,7 @@ class FrontendBehaviors
         $width      = $_Int($settings->width, 4);
         $shadow     = $_Bool($settings->shadow);
 
-        if (!in_array($position, ['top', 'bottom', 'left', 'right'])) {
+        if (!in_array($position, ['top', 'bottom', 'left', 'right'], true)) {
             $position = 'top';
         }
 
