@@ -25,16 +25,11 @@ class FrontendBehaviors
     {
         $settings = My::settings();
 
-        if (!$settings->enabled) {
+        if (!$settings->getBool('enabled')) {
             return '';
         }
 
-        // Variable data helpers
-        $_Bool = fn (mixed $var): bool => (bool) $var;
-        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
-        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
-        if ($_Bool($settings->single)) {
+        if ($settings->getBool('single', false)) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
@@ -46,12 +41,12 @@ class FrontendBehaviors
             }
         }
 
-        $position   = $_Str($settings->position, 'top');
-        $color      = $_Str($settings->color, '#e9573f');
-        $color_dark = $_Str($settings->color_dark, '#e9573f');
-        $offset     = $_Int($settings->offset);
-        $width      = $_Int($settings->width, 4);
-        $shadow     = $_Bool($settings->shadow);
+        $position   = $settings->getStr('position', false) ?: 'top';
+        $color      = $settings->getStr('color', false) ?: '#e9573f';
+        $color_dark = $settings->getStr('color_dark', false) ?: '#e9573f';
+        $offset     = $settings->getInt('offset', false);
+        $width      = $settings->getInt('width', false) ?: 4;
+        $shadow     = $settings->getBool('shadow', false);
 
         if (!in_array($position, ['top', 'bottom', 'left', 'right'], true)) {
             $position = 'top';
@@ -82,15 +77,11 @@ class FrontendBehaviors
     {
         $settings = My::settings();
 
-        if (!$settings->enabled) {
+        if (!$settings->getBool('enabled')) {
             return '';
         }
 
-        // Variable data helpers
-        $_Bool = fn (mixed $var): bool => (bool) $var;
-        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
-        if ($_Bool($settings->single)) {
+        if ($settings->getBool('single', false)) {
             // Single mode only, check if post/page context
             $urlTypes = ['post'];
             if (App::plugins()->moduleExists('pages')) {
@@ -102,7 +93,7 @@ class FrontendBehaviors
             }
         }
 
-        $position = $_Str($settings->position, 'top');
+        $position = $settings->getStr('position', false) ?: 'top';
 
         echo (new Div('hscroll-bar'))
             ->class($position === 'left' || $position === 'right' ? 'vertical' : '')

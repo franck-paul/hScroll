@@ -32,11 +32,6 @@ class BackendBehaviors
     {
         $settings = My::settings();
 
-        // Variable data helpers
-        $_Bool = fn (mixed $var): bool => (bool) $var;
-        $_Int  = fn (mixed $var, int $default = 0): int => $var !== null && is_numeric($val = $var) ? (int) $val : $default;
-        $_Str  = fn (mixed $var, string $default = ''): string => $var !== null && is_string($val = $var) ? $val : $default;
-
         # Style options
         $styles = [
             __('At top')    => 'top',
@@ -45,13 +40,13 @@ class BackendBehaviors
             __('At right')  => 'right',
         ];
 
-        $position   = $_Str($settings->position, 'top');
-        $color      = $_Str($settings->color, '#e9573f');
-        $color_dark = $_Str($settings->color_dark, '#e9573f');
-        $offset     = $_Int($settings->offset);
-        $width      = $_Int($settings->width, 4);
-        $shadow     = $_Bool($settings->shadow);
-        $single     = $_Bool($settings->single);
+        $position   = $settings->getStr('position', false) ?: 'top';
+        $color      = $settings->getStr('color', false) ?: '#e9573f';
+        $color_dark = $settings->getStr('color_dark', false) ?: '#e9573f';
+        $offset     = $settings->getInt('offset', false);
+        $width      = $settings->getInt('width', false) ?: 4;
+        $shadow     = $settings->getBool('shadow', false);
+        $single     = $settings->getBool('single', false);
 
         // Add fieldset for plugin options
         echo
@@ -59,7 +54,7 @@ class BackendBehaviors
         ->legend((new Legend(__('hScroll'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('hscroll_enabled', (bool) $settings->enabled))
+                (new Checkbox('hscroll_enabled', $settings->getBool('enabled', false)))
                     ->value(1)
                     ->label((new Label(__('Enable horizontal or vertical reading scrollbar'), Label::INSIDE_TEXT_AFTER))),
             ]),
