@@ -15,9 +15,9 @@ $this->registerModule(
     'hScroll',
     'Horizontal or vertical reading scrollbar',
     'Franck Paul and contributors',
-    '5.4',
+    '6.0',
     [
-        'date'        => '2026-04-06T13:36:38+0200',
+        'date'        => '2026-08-03T10:00:16+0200',
         'requires'    => [['core', '2.39']],
         'permissions' => 'My',
         'type'        => 'plugin',
