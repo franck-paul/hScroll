@@ -10,8 +10,8 @@ dotclear.ready(() => {
   const vertical = scrollbar.classList.contains('vertical');
   const updateScrollbar = () => {
     const position = `${(globalThis.scrollY / (document.body.clientHeight - globalThis.innerHeight)) * 100}%`;
-    if (vertical) scrollbar.style.height = position;
-    else scrollbar.style.width = position;
+    if (vertical) scrollbar.style.blockSize = position;
+    else scrollbar.style.inlineSize = position;
   };
   globalThis.addEventListener('load', updateScrollbar);
   globalThis.addEventListener('scroll', updateScrollbar);

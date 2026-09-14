@@ -1,23 +1,23 @@
 #hscroll-bar {
   position: fixed;
-  height: var(--hscroll-width, 4px);
-  width: 0;
-  top: var(--hscroll-top, unset);
-  bottom: var(--hscroll-bottom, unset);
-  left: 0;
+  block-size: var(--hscroll-width, 4px);
+  inline-size: 0;
+  inset-block-start: var(--hscroll-top, unset);
+  inset-block-end: var(--hscroll-bottom, unset);
+  inset-inline-start: 0;
   z-index: 3000;
   backface-visibility: hidden;
   &.vertical {
-    height: 0;
-    width: var(--hscroll-width, 4px);
-    top: 0;
-    bottom: unset;
-    left: var(--hscroll-left, unset);
-    right: var(--hscroll-right, unset);
+    block-size: 0;
+    inline-size: var(--hscroll-width, 4px);
+    inset-block-start: 0;
+    inset-block-end: unset;
+    inset-inline-start: var(--hscroll-left, unset);
+    inset-inline-end: var(--hscroll-right, unset);
   }
 }
 #hscroll-bar-inner {
   box-shadow: var(--hscroll-shadow, unset);
-  height: 100%;
+  block-size: 100%;
   background-color: light-dark(var(--hscroll-color, #e9573f), var(--hscroll-color_dark, #e9573f));
 }
