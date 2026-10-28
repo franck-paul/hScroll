@@ -36,7 +36,7 @@ class FrontendBehaviors
                 $urlTypes[] = 'pages';
             }
 
-            if (!in_array(App::url()->getType(), $urlTypes)) {
+            if (!in_array(App::url()->getType(), $urlTypes, true)) {
                 return '';
             }
         }
@@ -88,7 +88,7 @@ class FrontendBehaviors
                 $urlTypes[] = 'pages';
             }
 
-            if (!in_array(App::url()->getType(), $urlTypes)) {
+            if (!in_array(App::url()->getType(), $urlTypes, true)) {
                 return '';
             }
         }
