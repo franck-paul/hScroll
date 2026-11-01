@@ -25,7 +25,7 @@ class FrontendBehaviors
     {
         $settings = My::settings();
 
-        if (!$settings->getBool('enabled')) {
+        if (!$settings->getBool('enabled', false)) {
             return '';
         }
 
@@ -77,7 +77,7 @@ class FrontendBehaviors
     {
         $settings = My::settings();
 
-        if (!$settings->getBool('enabled')) {
+        if (!$settings->getBool('enabled', false)) {
             return '';
         }
 
