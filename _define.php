@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'hScroll',
         'Horizontal or vertical reading scrollbar',
         'Franck Paul and contributors',
-        '6.0',
+        '6.1',
         [
-            'date'        => '2026-08-03T10:00:16+0200',
+            'date'        => '2026-11-07T16:55:44+0100',
             'requires'    => [['core', '2.39']],
             'permissions' => 'My',
             'type'        => 'plugin',
